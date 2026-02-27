@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rogue Reformed Church</title>
+  <meta name="description" content="Rogue Reformed Church — Strong in Grace. Built on the Rock." />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --card:#111318;
+      --text:#e9edf1;
+      --muted:#b7c0c8;
+      --line:rgba(255,255,255,.10);
+      --accent:#d01f2a; /* subtle Rogue-ish red */
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(208,31,42,.18), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, #07080b, var(--bg));
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 16px;
+    }
+
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      gap:18px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 18px;
+      background: rgba(17,19,24,.65);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 0;
+    }
+
+    .logo{
+      width:64px;
+      height:64px;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: .4px;
+      line-height:1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tag{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+
+    .pill{
+      font-size: 12px;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding: 8px 10px;
+      border-radius: 999px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      white-space: nowrap;
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(208,31,42,.16);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap:18px;
+    }
+
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
+      header{ flex-direction: column; align-items:flex-start; }
+    }
+
+    .card{
+      background: rgba(17,19,24,.7);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      padding: 22px;
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing:.3px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    h2:before{
+      content:"";
+      width:10px;
+      height:10px;
+      border-radius: 3px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(208,31,42,.14);
+      flex:0 0 auto;
+    }
+
+    p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    ul{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height:1.65;
+      font-size: 15px;
+    }
+
+    .small{
+      font-size: 13px;
+      color: rgba(233,237,241,.75);
+      margin-top: 14px;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 600;
+      letter-spacing: .2px;
+      font-size: 14px;
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(208,31,42,.95), rgba(170,18,30,.95));
+      border-color: rgba(208,31,42,.55);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    .footer{
+      text-align:center;
+      color: rgba(233,237,241,.6);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .divider{
+      height:1px;
+      background: var(--line);
+      margin: 14px 0;
+    }
+
+    .kicker{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color: rgba(233,237,241,.9);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .kicker strong{ color: var(--text); }
+    .kicker span{
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: rgba(233,237,241,.85);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-label="Rogue Reformed Church logo">
+          <!-- Put your logo file next to this HTML and name it logo.png -->
+          <img src="logo.png" alt="Rogue Reformed Church logo" />
+        </div>
+        <div style="min-width:0">
+          <h1>Rogue Reformed Church</h1>
+          <div class="tag">Strong in Grace. Built on the Rock. (No chalk required.)</div>
+        </div>
+      </div>
+
+      <div class="pill" title="Status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Coming Soon • roguereformedchurch.fun</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Mission</h2>
+        <p>
+          <strong>Rogue Reformed Church exists to glorify the Triune God</strong> by proclaiming
+          Jesus Christ crucified and risen, strengthening His people through Word and Sacrament,
+          and forming disciples who can carry the full weight of His Lordship with joy.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>Vision</h2>
+        <p>At Rogue Reformed Church, we believe grace is not lightweight.</p>
+        <ul>
+          <li><strong>The Weekly Lift:</strong> Word &amp; Sacrament. No smoke machines. Just Christ clearly proclaimed.</li>
+          <li><strong>Doctrine That Carries the Load:</strong> Confessional faith built for suffering, doubt, and long Mondays.</li>
+          <li><strong>Spiritual Disciplines (No Shortcuts):</strong> Repentance, prayer, Scripture, generosity, and perseverance.</li>
+          <li><strong>Covenant Community:</strong> Spotters included. Accountability, encouragement, and shepherding.</li>
+          <li><strong>Endurance for the Long Race:</strong> Faithfulness over decades—families discipled, neighbors loved, churches planted.</li>
+        </ul>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="mailto:hello@roguereformedchurch.fun">Contact</a>
+          <a class="btn" href="#what-to-expect">What to expect</a>
+          <a class="btn" href="#confessional">Confessional</a>
+        </div>
+
+        <p class="small">
+          *Tongue firmly in cheek. Reverence firmly intact.
+        </p>
+      </div>
+
+      <aside class="card">
+        <h2 id="what-to-expect">What to expect</h2>
+        <p>
+          A church that takes the gospel seriously and itself less seriously.
+          You’ll hear the Bible preached, pray with God’s people, confess sin, sing robustly,
+          and receive the sacraments in their proper place.
+        </p>
+
+        <div class="kicker">
+          <span>Hebrews 12</span>
+          <div>“Let us run with <strong>endurance</strong>…”</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="confessional">Confessional</h2>
+        <p>
+          Presbyterian in polity, Reformed in theology, and committed to historic Christian faith.
+          We aim for worship that is joyful, ordered, and centered on Christ.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>Meeting info</h2>
+        <p>
+          <strong>Launch date:</strong> TBD<br/>
+          <strong>Location:</strong> TBD<br/>
+          <strong>Updates:</strong> Follow along here as the site fills out.
+        </p>
+
+        <p class="small">
+          Want this to look even more “Rogue”? Replace the logo, adjust the accent color, and add a gritty background texture.
+        </p>
+      </aside>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Rogue Reformed Church • Soli Deo Gloria
+    </div>
+  </main>
+
+  <script>
+    // sets the year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
